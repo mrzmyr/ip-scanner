@@ -1,6 +1,6 @@
 ### IP Scanner
 
-IP Scanner built with [electron](https://github.com/atom/electron), [node-libnmap](https://github.com/jas-/node-libnmap) and [material-design-lite](https://github.com/google/material-design-lite).
+IP Scanner built with [electron](https://github.com/atom/electron), [angular](https://angularjs.org),  [node-libnmap](https://github.com/jas-/node-libnmap) and [material-design-lite](https://github.com/google/material-design-lite).
 
 <h1 align="center">
   <br>
@@ -12,10 +12,22 @@ IP Scanner built with [electron](https://github.com/atom/electron), [node-libnma
 
 #### Installation
 
+**OSX**
+
+Install `nmap` via homebrew
+
+```
+brew install nmap
+```
+
+**Window**
+
+[Download nmap](https://nmap.org/download.html) and install
+
 Install [electron](https://github.com/atom/electron)
 
 ```
-npm install -g electron
+npm install electron-prebuilt -g
 ```
 
 Install dependencies
