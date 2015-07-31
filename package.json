@@ -1,0 +1,23 @@
+{
+  "name": "ip-scanner",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mrzmyr <m0ritz.m3yer@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrzmyr/ip-scanner"
+  },
+    "bugs": {
+    "url": "https://github.com/mrzmyr/ip-scanner/issues"
+  },
+  "dependencies": {
+    "electron-prebuilt": "^0.30.2",
+    "electron-rebuild": "^0.2.5",
+    "node-libnmap": "^0.1.13"
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IP Scanner</title>
+    <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+  </head>
+  <body ng-app="app" ng-controller="appCtrl">
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">IP Scanner</span>
+        </div>
+      </header>
+
+      <div 
+        style="width: 100%" 
+        ng-show="scanRunning" 
+        class="mdl-progress mdl-js-progress mdl-progress__indeterminate progress-demo"
+      ></div>
+
+      <main class="mdl-layout__content">
+
+      <div class="">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col">
+          <h2 class="text-muted" ng-show="scanRunning">Scanning...</h2>
+          <p class="text-muted" ng-show="!scanRunning">
+            <span>Scan duration: {{ time | number:1 }} seconds</span>
+            <button 
+              class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"
+              ng-click="scan()"
+            >
+              <i class="material-icons md-dark">autorenew</i>
+            </button>
+          </p>
+          <br>
+          <table 
+            ng-show="reports.length"
+            style="width: 100%" 
+            class="mdl-data-table mdl-shadow--2dp"
+          >
+            <thead>
+              <tr>
+                <th width="25px" class="mdl-data-table__cell--non-numeric">OS</th>
+                <th class="mdl-data-table__cell--non-numeric">Hostname</th>
+                <th class="mdl-data-table__cell--non-numeric">IP</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="report in reports">
+              <tr ng-if="report.host.length" ng-repeat="host in report.host">
+                <td class="mdl-data-table__cell--non-numeric">
+                  <platform-icon platform="host.os" />
+                </td>
+                <td class="mdl-data-table__cell--non-numeric" ng-bind="host.hostnames.name"></td>
+                <td class="mdl-data-table__cell--non-numeric" ng-bind="host.address.addr"></td>
+              </tr>
+              <tr ng-if="!report.host.length">
+                <td class="mdl-data-table__cell--non-numeric">
+                  <platform-icon platform="report.host.os" />
+                </td>
+                <td class="mdl-data-table__cell--non-numeric" ng-bind="report.host.hostnames.name"></td>
+                <td class="mdl-data-table__cell--non-numeric" ng-bind="report.host.address.addr"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          </div>
+        </div>
+        </div>
+      </main>
+
+      <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+          <ul class="mdl-mini-footer__link-list">
+            <li><a href="#">io.js (<script>document.write(process.version)</script>)</a></li>
+            <li><a href="#">Electron (<script>document.write(process.versions['electron'])</script>)</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+
+    <script src="bower_components/material-design-lite/material.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+  </body>
+</html>
